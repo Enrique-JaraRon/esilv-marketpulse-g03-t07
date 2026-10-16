@@ -44,8 +44,6 @@ def display_market_summary(asset, prices, show_currency=True):
     print(f"Last close  : {last_close:.2f}{currency}")
 
 
-
-
 def main():
     instruments = load_instruments()
     prices = load_prices()
@@ -72,4 +70,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
+
