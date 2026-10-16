@@ -12,9 +12,9 @@ Copy this file to `TEAM.md` in your team repository and complete it before start
 
 | Full name | GitHub username |
 |---|---|
-| Student 1 | Enrique-JaraRon |
-| Student 2 | rudyyj |
-| Student 3 | Mathis2103 |
+| Enrique Jara-Ron | Enrique-JaraRon |
+| Rudy Jabbour | rudyyj |
+| Mathis Henry | Mathis2103 |
 
 
 
