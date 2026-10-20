@@ -188,3 +188,27 @@ se code
 | * 1f7af0b Evidences du td2 et td3
 | * 5e49bbd création des fichiers dans evidence
 ~
+
+$ git branch
+git branch --merged
+git log --oneline --graph --decorate --all
+  feature/display-observation-dates-rudy
+* main
+  rudy
+  feature/display-observation-dates-rudy
+* main
+  rudy
+* 0a52a8b (HEAD -> main) td 4 rendu final rudy
+* 28ad24c (origin/main, origin/HEAD) td 4 rendu rudy
+| * b382c47 (origin/Mathis) sujet td5
+|/  
+* 4abba41 docs: remove TD4 markdown replaced by notebook
+* f05d331 docs: add Mathis TD4 notebook
+*   2ac75c1 Merge branch 'main' into Mathis
+|\  
+| * 3324864 (origin/rudy, rudy, feature/display-observation-dates-rudy) td4 rendu
+| * b955bee feat: display first and last observation dates
+* | 0c580e1 Merge branch 'main' of https://github.com/Enrique-JaraRon/esilv-marketpulse-g03-t07 into Mathis
+|\| 
+| * 9596943 Add files via upload
+:
