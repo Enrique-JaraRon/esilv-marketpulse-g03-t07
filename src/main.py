@@ -6,6 +6,7 @@ import json
 
 DATA_DIR = Path("data/sample")
 
+DATA_PROVIDER = "csv"
 LOOKBACK_LABEL = "1 month"
 INTERVAL_LABEL = "Daily"
 
@@ -69,8 +70,9 @@ def main():
     print("=== MarketPulse ===")
     print()
     print("Market configuration")
-    print(f"Period   : {LOOKBACK_LABEL}")
-    print(f"Interval : {INTERVAL_LABEL}")
+    print(f"Data provider : {DATA_PROVIDER}")
+    print(f"Period        : {LOOKBACK_LABEL}")
+    print(f"Interval      : {INTERVAL_LABEL}")
     print()
 
     print("Instrument")
@@ -83,3 +85,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
