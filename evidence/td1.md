@@ -1,5 +1,8 @@
 # td1
 
+VOICI LE TDO1 , nous avons mis tout ce que nous avons rentré dans le terminal vis à vis de Linux : 
+
+
 @Mathis2103 ➜ /workspaces/esilv-marketpulse-g03-t07 (main) $ pwd
 /workspaces/esilv-marketpulse-g03-t07
 @Mathis2103 ➜ /workspaces/esilv-marketpulse-g03-t07 (main) $ ls
