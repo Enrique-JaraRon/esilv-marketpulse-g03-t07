@@ -2,7 +2,7 @@
 
 
 def index_by_date(prices):
-    raise NotImplementedError
+    return {row["date"]: row for row in prices}
 
 
 def align_series(instrument_prices, benchmark_prices):
@@ -24,11 +24,33 @@ def align_series(instrument_prices, benchmark_prices):
 
 
 def calculate_period_return(prices):
-    raise NotImplementedError
+    if not prices:
+        raise ValueError("Cannot calculate return for an empty series.")
+
+    first_close = float(prices[0]["close"])
+    if first_close == 0:
+        raise ValueError("First close cannot be zero.")
+
+    last_close = float(prices[-1]["close"])
+    return ((last_close / first_close) - 1.0) * 100.0
 
 
 def calculate_base_100(prices):
-    raise NotImplementedError
+    if not prices:
+        raise ValueError("Cannot calculate base 100 for an empty series.")
+
+    first_close = float(prices[0]["close"])
+    if first_close == 0:
+        raise ValueError("First close cannot be zero.")
+
+    return [
+        {
+            "date": row["date"],
+            "ticker": row["ticker"],
+            "value": (float(row["close"]) / first_close) * 100.0,
+        }
+        for row in prices
+    ]
 
 
 def calculate_relative_performance(instrument_return, benchmark_return):
