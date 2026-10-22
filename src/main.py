@@ -51,6 +51,7 @@ def display_market_summary(asset, prices, show_currency=True):
 
     print(f"{asset['ticker']} - {asset['name']}")
     print(f"Market      : {asset['market']}")
+    print(f"Data provider : {DATA_PROVIDER}")
     print(f"Observations : {len(prices)}")
     print(f"First date  : {first_date}")
     print(f"Last date   : {last_date}")
@@ -71,7 +72,6 @@ def main():
     print("=== MarketPulse ===")
     print()
     print("Market configuration")
-    print(f"Data provider : {DATA_PROVIDER}")
     print(f"Period        : {LOOKBACK_LABEL}")
     print(f"Interval      : {INTERVAL_LABEL}")
     print()
