@@ -2,6 +2,7 @@
 from pathlib import Path
 import csv
 import json
+from providers.yahoo_provider import fetch_yahoo_prices
 from analytics import (
     align_series,
     calculate_period_return,
@@ -16,6 +17,9 @@ DATA_PROVIDER = "csv"
 LOOKBACK_LABEL = "1 month"
 INTERVAL_LABEL = "Daily"
 
+PROVIDER = "yahoo"
+LOOKBACK = "1mo"
+INTERVAL = "1d"
 
 def load_instruments():
     with open(DATA_DIR / "instruments.json", encoding="utf-8") as file:
@@ -65,15 +69,39 @@ def display_market_summary(asset, prices, show_currency=True):
     print(f"Last close  : {last_close:.2f}{currency}")
 
 
+
 def main():
+    
     instruments = load_instruments()
-    prices = load_prices()
 
     instrument = instruments["instrument"]
     benchmark = instruments["benchmark"]
 
-    instrument_prices = filter_prices(prices, instrument["ticker"])
-    benchmark_prices = filter_prices(prices, benchmark["ticker"])
+    if PROVIDER == "csv":
+        prices = load_prices()
+
+        instrument_prices = filter_prices(
+            prices, instrument["ticker"]
+        )
+        benchmark_prices = filter_prices(
+            prices, benchmark["ticker"]
+        )
+
+    elif PROVIDER == "yahoo":
+        instrument_prices = fetch_yahoo_prices(
+            instrument["ticker"],
+            lookback=LOOKBACK,
+            interval=INTERVAL
+        )
+        benchmark_prices = fetch_yahoo_prices(
+            benchmark["ticker"],
+            lookback=LOOKBACK,
+            interval=INTERVAL
+        )
+
+    else:
+        raise ValueError(f"Unknown provider: {PROVIDER}")
+
 
     print("=== MarketPulse ===")
     print()
