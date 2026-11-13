@@ -13,7 +13,6 @@ from analytics import (
 
 DATA_DIR = Path("data/sample")
 
-DATA_PROVIDER = "csv"
 LOOKBACK_LABEL = "1 month"
 INTERVAL_LABEL = "Daily"
 
@@ -61,7 +60,7 @@ def display_market_summary(asset, prices, show_currency=True):
 
     print(f"{asset['ticker']} - {asset['name']}")
     print(f"Market      : {asset['market']}")
-    print(f"Data provider : {DATA_PROVIDER}")
+    print(f"Data provider : {PROVIDER}")
     print(f"Observations : {len(prices)}")
     print(f"First date  : {first_date}")
     print(f"Last date   : {last_date}")
@@ -120,6 +119,9 @@ def main():
     aligned_instrument, aligned_benchmark = align_series(
         instrument_prices, benchmark_prices
     )
+
+    if not aligned_instrument:
+        raise RuntimeError("No common trading sessions for AAPL and SP500.")
 
     instrument_return = calculate_period_return(aligned_instrument)
     benchmark_return = calculate_period_return(aligned_benchmark)

@@ -1,6 +1,4 @@
 
-import math
-
 import pandas as pd
 import yfinance as yf
 
@@ -28,6 +26,9 @@ def fetch_yahoo_prices(
         auto_adjust=False,
         progress=False,
     )
+
+    if raw.empty:
+        raise RuntimeError(f"Yahoo returned no data for {canonical_ticker}.")
 
     if isinstance(raw.columns, pd.MultiIndex):
         raw.columns = raw.columns.get_level_values(0)
@@ -62,5 +63,8 @@ def fetch_yahoo_prices(
         rows.append(row)
 
     rows.sort(key=lambda row: row["date"])
+
+    if not rows:
+        raise RuntimeError(f"Yahoo returned no valid prices for {canonical_ticker}.")
 
     return rows
