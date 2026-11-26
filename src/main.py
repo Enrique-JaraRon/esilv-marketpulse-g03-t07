@@ -126,6 +126,8 @@ def build_market_snapshot():
 
     return {
         "provider": PROVIDER,
+        "lookback": LOOKBACK,
+        "interval": INTERVAL,
         "access_mode": "APPROVED_SAMPLE" if PROVIDER == "bloomberg" else None,
         "instrument": instrument,
         "benchmark": benchmark,
