@@ -2,6 +2,12 @@ import json
 from pathlib import Path
 
 
+BLOOMBERG_IDENTIFIERS = {
+    "AAPL": "AAPL US Equity",
+    "SP500": "SPX Index",
+}
+
+
 SAMPLE_PATH = (
     Path(__file__).resolve().parents[2]
     / "data"
@@ -15,7 +21,10 @@ def load_approved_observations(canonical_ticker):
         sample = json.load(sample_file)
 
     for series in sample["series"]:
-        if series["canonical_ticker"] == canonical_ticker:
+        if (
+            series["canonical_ticker"] == canonical_ticker
+            and series["provider_identifier"] == BLOOMBERG_IDENTIFIERS.get(canonical_ticker)
+        ):
             return series["observations"]
 
     raise ValueError(f"Ticker introuvable dans APPROVED_SAMPLE : {canonical_ticker}")
